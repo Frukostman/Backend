@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 1 FC- Santiago Homps</title>
+
+</head>
+<body>
+    <script>
+
+    //FUNCION CONSTRUCTORA ES5
+
+function Usuario(nombre, apellido, libros, mascotas) {
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.libros = libros;
+    this.mascotas = mascotas;
+
+    // Devolver nombre
+    this.getFullName= () =>{
+        return(`${this.nombre} ${this.apellido}`)
+    };
+    // Agregar mascota
+    this.addMascota= newMascota =>{
+    this.mascotas = [...this.mascotas, newMascota]
+    };
+    // Devolver mascotas
+    this.getMascotas = ()=>{
+       return(`${this.mascotas.length} mascotas`)
+    };
+    // Agregar libro
+    this.addBook = (newTitulo, newAutor) => {
+    this.libros = [...this.libros, {titulo: newTitulo, autor: newAutor}]
+    };
+    // Devolver titulos libros
+    this.getBooks = ()=>{
+    return this.libros.map(libro => libro.titulo)
+    }
+}
+
+//Datos Usuario
+
+var mascotas = ["Canario", "Araña", "Tortuga", "Camarón"]
+
+var libros = [
+    {titulo: '1984', autor:'George Orwell'},
+    {titulo: 'La sombra del viento', autor:'Carlos Ruiz Zafon'},
+    {titulo: 'La metamorfosis', autor: "Franz Kafka"}
+]
+
+var primerUsuario = new Usuario("Peter", "Parker", libros, mascotas)
+
+//Validaciones
+
+console.log(primerUsuario.getFullName())
+
+primerUsuario.addMascota("Perro")
+console.log(primerUsuario.mascotas);
+
+console.log(primerUsuario.getMascotas());
+
+primerUsuario.addBook("Drácula","Bram Stoker")
+console.log(primerUsuario.libros);
+
+console.log(primerUsuario.getBooks());
+
+    </script>    
+</body>
+
+</html>

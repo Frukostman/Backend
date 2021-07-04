@@ -1,0 +1,25 @@
+{
+  "name": "desafios",
+  "version": "1.0.0",
+  "description": "Desafios entregables de curso Back-End en Coderhouse 2021",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frukostman/Backend.git"
+  },
+  "author": "Santiago Homps",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Frukostman/Backend/issues"
+  },
+  "homepage": "https://github.com/Frukostman/Backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "nodemon": "^2.0.9",
+    "typescript": "^4.3.5"
+  }
+}

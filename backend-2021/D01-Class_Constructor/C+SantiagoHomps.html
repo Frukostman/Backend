@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 1 C- Santiago Homps</title>
+
+</head>
+<body>
+    <script>
+
+//     //Constructor class de ES6
+
+// class Usuario {
+//     constructor (nombre, apellido, libros, mascotas){
+//     this.nombre = nombre,
+//     this.apellido = apellido,
+//     this.libros = libros,
+//     this.mascotas = mascotas
+//     }
+//     // Devolver nombre
+//     getFullName() {
+//         return(`${this.nombre} ${this.apellido}`)
+//         };
+//     // Agregar mascota
+//     addMascota(newMascota) {
+//         this.mascotas = [...this.mascotas, newMascota]
+//         };
+//     // Devolver mascotas
+//     getMascotas(){
+//         return(`${this.nombre} tiene ${this.mascotas.length} mascotas`)
+//         };
+//     // Agregar libro
+//     addBook(newTitulo, newAutor)  {
+//         this.libros = [...this.libros, {titulo: newTitulo, autor: newAutor}]
+//         };
+//     // Devolver titulos libros
+//     getBooks(){
+//         return this.libros.map(libro => libro.titulo)
+//         }
+// }
+
+// var libros = [
+//     {titulo: 'La odisea', autor:'Homero'},
+//     {titulo: 'Los miserables', autor:'Victor Hugo'},
+//     {titulo: 'Ulises', autor: 'James Joyce'}
+// ]
+// var mascotas = ['Perro', 'Gato', 'Conejo']
+
+// var segundoUsuario = new Usuario('Clark', 'Kent', libros, mascotas)
+
+// //Validaciones
+
+// console.log(segundoUsuario.getFullName())
+
+// segundoUsuario.addMascota("Ornitorrinco")
+// console.log(segundoUsuario.mascotas);
+
+// console.log(segundoUsuario.getMascotas());
+
+// segundoUsuario.addBook("Drácula","Bram Stoker")
+// console.log(segundoUsuario.libros);
+
+// console.log(segundoUsuario.getBooks());
+
+
+
+let resultado
+const operacion = (numero1, numero2, operacion) => {
+
+    switch (operacion) {
+        case "SUMA":
+            resultado=(numero1 + numero2);
+            // console.log (numero1 + numero2);
+            break;
+        case "RESTA":
+            resultado=(numero1 - numero2);
+            // console.log (numero1 - numero2);
+            break;
+   
+        default: 
+        console.log("mal ingresado")
+            break;
+
+            
+        }
+    }
+
+    operacion(2,5,"RESTA")
+    
+        console.log(resultado)
+
+    </script>    
+</body>
+
+</html>
