@@ -1,44 +1,32 @@
+//importo express
 const express = require('express');
-// const Producto = require('./producto');
+// importo modulo creador de productos
+const Productos = require('./productos');
 
-
+// instancias
+const puerto = 8080;
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded());
 
-class Producto {
-  constructor(id, title, price, thumbnail) {
-      this.id= id
-      this.title= title,
-      this.price= price,
-      this.thumbnail= thumbnail
-  }
-//METODOS
-
-}
-
-const listaProductos = []
-
+//GET listado completo de productos
 app.get('/api/productos',(req, res) => {
-    res.json(listaProductos)
+  //Llamo al metodo leer del modulo productos
+    res.json(Productos.leerProductos())
 })
+//GET producto por ID enviado x params
 app.get('/api/productos/:id',(req, res) => {
-    (req.params.id>listaProductos.length)? console.log("Ese producto no existe"):res.json(listaProductos[req.params.id])
+    //Llamo al metodo leer x ID del modulo productos pasando el id como parametro
+    res.json(Productos.leerProductosConId(req.params.id))
 })
-app.post('/api/productos',(req, res) => {
-    let id = listaProductos.length+1;
-    let titulo = req.body.title;
-    let precio = req.body.price;
-    let imagen = req.body.thumbnail
-
-    let nuevoProducto = new Producto(id, titulo, precio, imagen)
-    listaProductos.push(nuevoProducto)
-
-    res.json(listaProductos)
+//POST de un producto nuevo sin ID
+app.post('/api/productos',(req,res) => {
+  //almaceno el producto retornado de la request en una variable
+  let prodGuardado = Productos.productoNuevo(req.body)
+  //respondo con el producto nuevo creado y el id asignado
+  res.send(prodGuardado)
 })
 
-const puerto = 8080;
 
 const server = app.listen(puerto, () => {
     console.log(`servidor escuchando en http://localhost:${puerto}`);
