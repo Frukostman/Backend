@@ -2,7 +2,7 @@
 
 //importacion
 const express = require('express');
-const handlebars=require('express-handlebars');
+const Handlebars = require("express-handlebars");
 const Productos = require('./productos');
 
 // instancias
@@ -10,17 +10,16 @@ const puerto = 8080;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/', express.static(__dirname + '/views'))
+// app.use('/', express.static(__dirname + '/views'))
+app.use('/', express.static('public'))
 const routerGlobal = express.Router();
 
 //HANDLEBARS
-//configuracion HBS
-app.engine(
-    'hbs',                                            //nombre ref. a la plantilla (se usa en el set)
-    handlebars({                                      //func. de config.
+
+app.engine('.hbs',Handlebars({                                      //func. de config.
         extname: '.hbs',                              //extension a utilizar
         defaultLayout: 'index.hbs',                   //plantilla ppal 
-        layoutsDir: __dirname + '/views',             //ruta a la plantilla ppal
+        layoutsDir: __dirname + '/views/layouts',             //ruta a la plantilla ppal
         partialsDir: __dirname + '/views/partials'    // ruta a las plant parciales
     })
 )
@@ -30,19 +29,23 @@ app.set('view engine', 'hbs')
 // directorio de archivos de plantilla
 app.set('views', './views')
 
+
+
 //GET y render
 routerGlobal.get('/productos/vista',(req,res)=>{
-    // let arrayProductos=Productos.leerProductos();
-    // if(arrayProductos.error){
-    //     res.render('error',{error:arrayProductos.error})
-    // }else{
-    //     res.render('productos',{Productos:arrayProductos})
-    // }
-    
-    res.render('productos')
-    // res.render('index')
+    let arrayProductos=Productos.leerProductos();
+    if(arrayProductos.error){
+        res.render('main',{hayProductos: false})
+    }else{
+        res.render('main',{hayProductos: true, productos:arrayProductos})
+    }
 })
 
+//GET y render
+routerGlobal.get('/',(req,res)=>{
+        console.log("formulario")
+        res.render('./partials/formulario')
+})
 
 //GET listado 
 routerGlobal.get('/productos',(req, res) => {
