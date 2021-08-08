@@ -11,7 +11,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', express.static(__dirname + '/public'))
 const routerGlobal = express.Router();
 
+// se setea el motor de plantilla a utilizar
+app.set('view engine', 'pug')
+// directorio de archivos de plantilla
+app.set('views', './views')
 
+//GET listado 
+routerGlobal.get('/',(req, res) => {
+  res.render('formulario')
+})
+
+//GET listado 
+routerGlobal.get('/productos/vista',(req, res) => {
+    let arrayProductos = (Productos.leerProductos())
+    console.log(arrayProductos)
+    if(arrayProductos.error){
+      res.render('productos',{hayProductos: false})
+  }else{
+      res.render('productos',{hayProductos: true, productos:arrayProductos})
+  }
+})
 //GET listado 
 routerGlobal.get('/productos',(req, res) => {
     res.json(Productos.leerProductos())
