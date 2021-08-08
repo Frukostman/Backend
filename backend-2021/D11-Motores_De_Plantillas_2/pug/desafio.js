@@ -1,8 +1,6 @@
-// D10 - HANDLEBARS
-
-//importacion
+//importo express
 const express = require('express');
-const Handlebars = require("express-handlebars");
+// importo modulo creador de productos
 const Productos = require('./productos');
 
 // instancias
@@ -10,42 +8,9 @@ const puerto = 8080;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use('/', express.static(__dirname + '/views'))
-app.use('/', express.static('public'))
+app.use('/', express.static(__dirname + '/public'))
 const routerGlobal = express.Router();
 
-//HANDLEBARS
-
-app.engine('.hbs',Handlebars({                        //func. de config.
-        extname: '.hbs',                              //extension a utilizar
-        defaultLayout: 'index.hbs',                   //plantilla ppal 
-        layoutsDir: __dirname + '/views/layouts',     //ruta a la plantilla ppal
-        partialsDir: __dirname + '/views/partials'    // ruta a las plant parciales
-    })
-)
-
-// se setea el motor de plantilla a utilizar
-app.set('view engine', 'hbs')
-// directorio de archivos de plantilla
-app.set('views', './views')
-
-
-
-//GET y render
-routerGlobal.get('/productos/vista',(req,res)=>{
-    let arrayProductos=Productos.leerProductos();
-    if(arrayProductos.error){
-        res.render('main',{hayProductos: false})
-    }else{
-        res.render('main',{hayProductos: true, productos:arrayProductos})
-    }
-})
-
-//GET y render
-routerGlobal.get('/',(req,res)=>{
-        console.log("formulario")
-        res.render('./partials/formulario')
-})
 
 //GET listado 
 routerGlobal.get('/productos',(req, res) => {
