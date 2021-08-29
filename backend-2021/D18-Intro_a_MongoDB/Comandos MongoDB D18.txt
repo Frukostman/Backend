@@ -16,9 +16,7 @@ use prueba
 
 4- Creo la coleccion "items" e ingreso 3 productos
 
-db.items.insert({ nombre: "Fideos", categoria: "Harina", stock: 20 })
-db.items.insert({ nombre: "Leche", categoria: "Lacteos", stock: 30 })
-db.items.insert({ nombre: "Crema", categoria: "Lacteos", stock: 15 })
+db.items.insert([{ nombre: "Fideos", categoria: "Harina", stock: 20 },{ nombre: "Leche", categoria: "Lacteos", stock: 30 },{ nombre: "Crema", categoria: "Lacteos", stock: 15 }])
 
 5- Listo los items agregados
 
